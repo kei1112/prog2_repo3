@@ -17,6 +17,7 @@ public class Hero {
     /**
      * ヒーローの名前を取得するメソッド。
      * setNameで名前を入れた名前が出力される
+     * @return ヒーローの名前
      */
     public String getName(){
         return this.name;
@@ -24,6 +25,8 @@ public class Hero {
     /**
      * ヒーローの名前を変更するメソッド。
      * 引数をヒーロークラスの名前に入れる
+     * @param heroname 設定したいヒーローの名前
+     * @return ヒーローの名前
      */
     public void setName(String heroname){
         this.name = heroname;
@@ -31,6 +34,7 @@ public class Hero {
     /**
      * ヒーローのhpを取得するメソッド。
      * setHitPointで入れたhpが出力される
+     * @return ヒーローのhp
      */
     public int getHitPoint(){
         return this.hitPoint;
@@ -38,6 +42,8 @@ public class Hero {
     /**
      * ヒーローのhpを変更するメソッド。
      * 引数をヒーロークラスのhitPointに入れる
+     * @param maximumHP 設定したいヒーローのhp
+     * @return ヒーローのhp
      */
     public void setHitPoint(int maximumHP){
         this.hitPoint = maximumHP;
@@ -45,6 +51,7 @@ public class Hero {
     /**
      * ヒーローの攻撃力を取得するメソッド。
      * setAttackで入れた攻撃力が出力される
+     * @return ヒーローの攻撃力
      */
     public int getAttack(){
         return this.attack;
@@ -52,6 +59,8 @@ public class Hero {
     /**
      * ヒーローの攻撃力を変更するメソッド。
      * 引数をヒーロークラスのattackに入れる
+     * @param attack 設定したいヒーローの攻撃力
+     * @return ヒーローの攻撃力
      */
     public void setAttack(int attack){
         this.attack = attack;
@@ -59,6 +68,7 @@ public class Hero {
     /**
      * ヒーローの生死状態を取得するメソッド。true=死亡
      * setDeadで入れた生死状態が出力される
+     * @return ヒーローの生死状態
      */
     public boolean isDead(){
         return this.dead;
@@ -66,6 +76,8 @@ public class Hero {
     /**
      * ヒーローの生死状態を変更するメソッド。
      * 引数を敵クラスのdeadに入れる
+     * @param dead ヒーローの生死状態がどんなか
+     * @return ヒーローの生死状態
      */
     public void setDead(boolean dead){
         this.dead = dead;
