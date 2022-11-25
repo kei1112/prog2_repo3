@@ -8,20 +8,9 @@ package jp.ac.ryukyu.ie.e225718;
  *  boolean dead; //敵の生死状態。true=死亡。
  * Created by tnal on 2016/11/13.
  */
-public class Enemy {
-    private String name;
-    private int hitPoint;
-    private int attack;
-    private boolean dead;
+public class Enemy extends LiveThing{     //ここの変更から
 
-    /**
-     * 敵の名前を取得するメソッド。
-     * setNameで名前を入れた名前が出力される
-     * @return 敵の名前
-     */
-    public String getName(){
-        return this.name;
-    }
+
     /**
      * 敵の名前を変更するメソッド。
      * 引数を敵クラスの名前に入れる
@@ -65,14 +54,7 @@ public class Enemy {
     public void setAttack(int attack){
         this.attack = attack;
     }
-    /**
-     * 敵の生死状態を取得するメソッド。true=死亡
-     * setDeadで入れた生死状態が出力される
-     * @return 敵の生死状態がどうか
-     */
-    public boolean isDead(){
-        return this.dead;
-    }
+
     /**
      * 敵の生死状態を変更するメソッド。
      * 引数を敵クラスのdeadに入れる
@@ -90,6 +72,7 @@ public class Enemy {
      * @param attack モンスターの攻撃力
      */
     public Enemy (String name, int maximumHP, int attack) {
+        super(name, maximumHP, attack);
         setName(name);
         setHitPoint(maximumHP);
         setAttack(attack);
@@ -98,21 +81,7 @@ public class Enemy {
         //this.setHitPoint = maximumHP;
         //this.setAttack = attack;
         //this.isDead = false;
-        System.out.printf("%sのHPは%d。攻撃力は%dです。\n", getName(), getHitPoint(), getAttack());
-    }
-
-    /**
-     * Heroへ攻撃するメソッド。
-     * attackに応じて乱数でダメージを算出し、hero.wounded()によりダメージ処理を実行。
-     * @param hero 攻撃対象
-     */
-    public void attack(Hero hero){
-        if (isDead() == false){
-        int damage = (int)(Math.random() * attack);
-        System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", getName(), hero.getName(), damage);
-        hero.wounded(damage);
-        }
-
+        System.out.printf("%sのHPは%d。攻撃力は%dです。\n",super.getName(), getHitPoint(), getAttack());
     }
 
     /**
@@ -120,9 +89,12 @@ public class Enemy {
      * 指定されたダメージを hitPoint から引き、死亡判定を行う。
      * @param damage 受けたダメージ
      */
+    @Override
     public void wounded(int damage){
-        setHitPoint((int)(getHitPoint() - damage));
-        if( getHitPoint() < 0 ) {
+        
+        int hp = getHitPoint() - damage;
+        setHitPoint(hp);
+        if(getHitPoint() < 0 ) {
             setDead(true);
             System.out.printf("モンスター%sは倒れた。\n", getName());
         }
